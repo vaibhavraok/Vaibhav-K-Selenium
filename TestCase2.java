@@ -1,62 +1,54 @@
-package Assessment;
+package Assessment2;
 
 import java.time.Duration;
 
-
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestCase2 {
 
-	public static void main(String[] args) throws InterruptedException 
-	{
-		//Launch the Chrome browser
-		WebDriver driver=new EdgeDriver();
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d = new ChromeDriver();
+		//maximize the window
+		d.manage().window().maximize();
+		//implicit wait
+		d.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
-		//Maximize the browser window
-		driver.manage().window().maximize();
-		
-		//Apply implicit wait
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
-		
-		//Navigate to the Myntra application
-		driver.get("https://www.myntra.com/");
+		//launch the browser
+		d.get("https://www.facebook.com/");
 		Thread.sleep(2000);
 		
-		//Search for any Product
-		driver.findElement(By.xpath("//input[@class=\"desktop-searchBar\"]")).sendKeys("flowers",Keys.ENTER);
+		//get location of the create account button
+		WebElement button = d.findElement(By.xpath("(//span[@class='x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft'])[3]"));
+		System.out.println(button.getLocation());
+		
+		//get dom attribute and dom property before passing value
+		WebElement email = d.findElement(By.id("_R_1h6kqsqppb6amH1_"));
+		System.out.println("Before Dom Attribute:"+email.getDomAttribute("value"));
+		System.out.println("Before Dom Property:"+email.getDomProperty("vlaue"));
 		Thread.sleep(2000);
 		
-//		//click on the Product
-//		driver.findElement(By.xpath("(//img[@class='img-responsive'])[4]")).click();
-//		Thread.sleep(2000);
-		
-		//Add the Product to Wishlist
-		WebElement ele = driver.findElement(By.xpath("(//span[@class='myntraweb-sprite product-notWishlistedIcon sprites-notWishlisted'])"));
+		//get dom attribute and dom property after passing value
+		email.sendKeys("vrk@123");
+		System.out.println("After Dom Attribute:"+email.getDomAttribute("value"));
+		System.out.println("After Dom Property:"+email.getDomProperty("vlaue"));
 		Thread.sleep(2000);
 		
-		//Typecast WebDriver to JavascriptExecutor(Downcast)
-		JavascriptExecutor js = (JavascriptExecutor)driver;
+		//click on create account
+		button.click();
 		
-		//handling the hidden element
-		js.executeScript("arguments[0].click()", ele);
+		//get size of the signup btn
+		WebElement signupbtn = d.findElement(By.linkText("Sign up"));
+		System.out.println(signupbtn.getSize());
 		
-		//verify whether product is added or not
-		String url=driver.getCurrentUrl();
-		if(url.contains("https://www.myntra.com/login?referer=https://www.myntra.com/flowers?rawQuery=flowers"))
-			System.out.println("Product is added to wishlist");
-		else
-			System.out.println("Product is not added to wishlist");
+		//get css properties of sign up button
+		System.out.println(signupbtn.getCssValue("color"));
+		System.out.println(signupbtn.getCssValue("font-family"));
+		System.out.println(signupbtn.getCssValue("font-weight"));
 		
 		//close the browser
-		Thread.sleep(5000);
-		driver.quit();
-		
-
+		d.quit();
 	}
-
 }

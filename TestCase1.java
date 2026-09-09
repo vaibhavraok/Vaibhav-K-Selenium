@@ -1,36 +1,52 @@
-package Assessment;
+package Assessment2;
 
-import java.io.File;
-import java.io.IOException;
 import java.time.Duration;
-import java.util.concurrent.ConcurrentHashMap.KeySetView;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.edge.EdgeDriver;
-import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.time.Duration;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
 
 public class TestCase1 {
-	public static void main(String[] args) throws InterruptedException, IOException {
-		WebDriver driver=new EdgeDriver();
-		driver.manage().window().maximize();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
-		driver.get("https://www.saucedemo.com/");
-		driver.findElement(By.id("user-name")).sendKeys("standard_user",Keys.TAB,"secret_sauce",Keys.ENTER);
-		JavascriptExecutor js=(JavascriptExecutor)driver;
-		Thread.sleep(3000);
-		WebElement ele=driver.findElement(By.xpath("//footer[@class='footer']"));
-		js.executeScript("arguments[0].scrollIntoView(true);", ele);Thread.sleep(2000);
-		TakesScreenshot tks=(TakesScreenshot) driver;
-		File src=tks.getScreenshotAs(OutputType.FILE);
-		File dest=new File("./Srn/products-page.png");
-		FileHandler.copy(src, dest);
-		
-	}
 
+	public static void main(String[] args) throws InterruptedException {
+		WebDriver d = new ChromeDriver();
+		//maximize the window
+		d.manage().window().maximize();
+		//implicit wait
+		d.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		//launch the browser
+		d.get("https://www.facebook.com/");
+		Thread.sleep(2000);
+		//click the create button
+		d.findElement(By.xpath("(//span[@class='x1lliihq x193iq5w x6ikm8r x10wlt62 xlyipyv xuxw1ft'])[3]")).click();
+		Thread.sleep(2000);
+		//locate the WebElements
+		WebElement firstname = d.findElement(By.id("_R_1cl2p4jikacppb6amH1_"));
+		WebElement lastname = d.findElement(By.id("_R_1kl2p4jikacppb6amH1_"));
+		//get x and y coordinates
+		int fnx = firstname.getLocation().getX();
+		System.out.println(fnx);
+		int lnx = lastname.getLocation().getX();
+		System.out.println(lnx);
+		int fny = firstname.getLocation().getY();
+		System.out.println(fny);
+		int lny = lastname.getLocation().getY();
+		System.out.println(lny);
+		//verify
+		if(fny==lny)
+			System.out.println("Are aligned in the same line");
+		else
+			System.out.println("Not aligned in the same line");
+		//close the browser
+		d.quit();
+	}
 }
