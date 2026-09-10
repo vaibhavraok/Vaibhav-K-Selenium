@@ -17,4 +17,4 @@
 2.Click on calender.
 3. Navigate to the next month in the current year.
 4. Select any valid date from that month.
-5. Verify that the selected date is displayed correctly in the date field.
+5. Verify that the selected date is displayed correctly in the date field. 
