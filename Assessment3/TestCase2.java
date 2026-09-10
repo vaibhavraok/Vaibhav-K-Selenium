@@ -2,6 +2,7 @@ package Assessment3;
 
 import java.time.Duration;
 
+import org.jspecify.annotations.Nullable;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -17,8 +18,8 @@ public class TestCase2 {
 		driver.findElement(By.xpath("//input[@type=\"text\"]")).click();
 		driver.findElement(By.xpath("//span[@class='react-datepicker__navigation-icon react-datepicker__navigation-icon--next']"));
 		driver.findElement(By.xpath("//div[text()='1']")).click();
-		WebElement date = driver.findElement(By.xpath("//input[@value='01/10/2026']"));
-		if(date.toString().contains("01")) {
+		String date = driver.findElement(By.xpath("//input[@placeholder='Select A Date']")).getAttribute("value");
+		if(date.equals("01/09/2026")) {
 			System.out.println("selected date is displayed correctly");
 		}
 		else {
