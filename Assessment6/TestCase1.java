@@ -32,12 +32,12 @@ public class TestCase1 {
 		String employeeid = df.formatCellValue(wb.getSheet("Sheet1").getRow(1).getCell(3));
 		String username = wb.getSheet("Sheet1").getRow(1).getCell(4).getStringCellValue();
 		String password = wb.getSheet("Sheet1").getRow(1).getCell(5).getStringCellValue();
-		String employeeName = wb.getSheet("Sheet1").getRow(1).getCell(7).getStringCellValue();
+		String employeeName = wb.getSheet("Sheet1").getRow(1).getCell(6).getStringCellValue();
 		
 		FileInputStream file=new FileInputStream("src/main/resources/Assessment6_Data/common_data.properties");
 		Properties p=new Properties();
 		p.load(file);
-		String Browser = p.getProperty("Browser");
+		String Browser = p.getProperty("browser");
 		String url = p.getProperty("url");
 		String user = p.getProperty("username");
 		String pass = p.getProperty("password");
@@ -94,18 +94,23 @@ public class TestCase1 {
 		driver.findElement(By.cssSelector("[type='submit']")).click();
 		
 		
-		WebElement record = driver.findElement(By.xpath("//div[@class='oxd-table-body']//div[@role='row']//div[text()='" 
-		                +"Vaibhav"+ "']"));
-		
-		if (record.isDisplayed()) {
+		 // Records Verification Section
+        WebElement recordsFoundText = driver.findElement(By.xpath("//span[contains(normalize-space(),'Record Found') or contains(normalize-space(),'Records Found')]"));
+        WebElement record = driver.findElement(By.xpath("//div[@class='oxd-table-body']//div[@role='row']//div[text()='" + username + "']"));
 
-		    System.out.println();
-		    System.out.println("TEST CASE PASSED");
-		} else {
+        if (record.isDisplayed()) {
+            System.out.println("LOG INFO: " + recordsFoundText.getText());
+            System.out.println("TEST CASE PASSED");
+        } else {
+            System.out.println("TEST CASE FAILED");
+        }
 
-		    System.out.println();
-		    System.out.println("TEST CASE FAILED");
-		}
+        // Dashboard Logout 
+        driver.findElement(By.className("oxd-userdropdown-name")).click();
+        driver.findElement(By.xpath("//a[text()='Logout']")).click();
+        Thread.sleep(2000);
+        driver.quit();
 	}
 
 }
+
