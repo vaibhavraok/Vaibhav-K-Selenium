@@ -5,6 +5,9 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.Properties;
 
+import org.apache.poi.ss.usermodel.DataFormatter;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -37,20 +40,20 @@ public class pomMain {
         String username = p.getProperty("username");
 
         String password = p.getProperty("password");
+        
+        FileInputStream file1=new FileInputStream("src/main/resources/Assessment8_Data/Testing_Data.xlsx");
+		Workbook wb = WorkbookFactory.create(file1);
+		
+		String firstName = wb.getSheet("Sheet1").getRow(1).getCell(0).getStringCellValue();
+		String middleName = wb.getSheet("Sheet1").getRow(1).getCell(1).getStringCellValue();
+		String lastName = wb.getSheet("Sheet1").getRow(1).getCell(2).getStringCellValue();
+		String email = wb.getSheet("Sheet1").getRow(1).getCell(3).getStringCellValue();
+		String mobile = wb.getSheet("Sheet1").getRow(1).getCell(4).toString();
+		String filePath = wb.getSheet("Sheet1").getRow(1).getCell(5).getStringCellValue();
+		
 
-        String firstName = p.getProperty("firstName");
-
-        String middleName = p.getProperty("middleName");
-
-        String lastName = p.getProperty("lastName");
-
-        String email = p.getProperty("email");
-
-        String mobile = p.getProperty("mobile");
-
-        String filePath = p.getProperty("filePath");
-
-
+        
+        
         // Browser
 
         WebDriver driver=null;
