@@ -1,4 +1,4 @@
-package Assessments.Day9;
+package Assessments9;
 
 public class KeyWords {
     public static void main(String[] args) throws InterruptedException {
