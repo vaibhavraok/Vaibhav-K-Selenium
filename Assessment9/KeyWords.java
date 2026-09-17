@@ -1,4 +1,4 @@
-package Assessments9;
+package Assessment9;
 
 public class KeyWords {
     public static void main(String[] args) throws InterruptedException {
