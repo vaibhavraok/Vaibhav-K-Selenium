@@ -1,4 +1,4 @@
-package Assessments.Day9;
+package Assessments9;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
