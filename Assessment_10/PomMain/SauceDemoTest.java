@@ -8,7 +8,7 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class SauceDemoTest extends BaseTest {
+public class SauceDemoTest extends BaseClass {
 
     LoginPage loginPage;
     ProductsPage productsPage;
