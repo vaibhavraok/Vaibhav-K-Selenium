@@ -10,16 +10,11 @@ import org.testng.annotations.Test;
 
 public class SauceDemoTest extends BaseClass {
 
-    LoginPage loginPage;
-    ProductsPage productsPage;
-    CartPage cartPage;
-    CheckoutPage checkoutPage;
-
     @Test(priority = 1)
     public void loginTest() throws InterruptedException {
 
-        loginPage = new LoginPage(driver);
-        productsPage = new ProductsPage(driver);
+    	LoginPage loginPage = new LoginPage(driver);
+    	ProductsPage productsPage = new ProductsPage(driver);
 
         Thread.sleep(2000);
 
@@ -43,7 +38,7 @@ public class SauceDemoTest extends BaseClass {
     @Test(priority = 2, dependsOnMethods = "loginTest")
     public void orderPlacementTest() throws IOException, InterruptedException {
 
-        productsPage = new ProductsPage(driver);
+    	ProductsPage productsPage = new ProductsPage(driver);
 
         // Add Sauce Labs Backpack
         productsPage.addBackpack();
@@ -64,7 +59,7 @@ public class SauceDemoTest extends BaseClass {
 
         Thread.sleep(2000);
 
-        cartPage = new CartPage(driver);
+        CartPage cartPage = new CartPage(driver);
 
         // Verify Backpack is displayed
         String productName = cartPage.getBackpackName();
@@ -80,7 +75,7 @@ public class SauceDemoTest extends BaseClass {
 
         Thread.sleep(2000);
 
-        checkoutPage = new CheckoutPage(driver);
+        CheckoutPage checkoutPage = new CheckoutPage(driver);
 
         // Read data from Excel
         FileInputStream fis = new FileInputStream("./src/test/resources/Assessment10_data/TestData.xlsx");
