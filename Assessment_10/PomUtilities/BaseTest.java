@@ -20,7 +20,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
 // This is BaseClass
-public class BaseTest {
+public class BaseClass {
 	WebDriver driver = null;
 	protected Properties p = new Properties();
     @BeforeSuite
