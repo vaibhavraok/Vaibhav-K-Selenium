@@ -19,6 +19,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
+// This is BaseClass
 public class BaseTest {
 	WebDriver driver = null;
 	protected Properties p = new Properties();
