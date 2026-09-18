@@ -1,6 +1,10 @@
 package Assessment10;
 
+import java.io.FileInputStream;
 import java.io.IOException;
+
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -79,11 +83,13 @@ public class SauceDemoTest extends BaseTest {
         checkoutPage = new CheckoutPage(driver);
 
         // Read data from Excel
-        String firstName = ExcelUtility.getData("Sheet1", 1, 0);
+        FileInputStream fis = new FileInputStream("./src/test/resources/Assessment10_data/TestData.xlsx");
 
-        String lastName = ExcelUtility.getData("Sheet1", 1, 1);
+	    Workbook wb = WorkbookFactory.create(fis);
 
-        String postalCode = ExcelUtility.getData("Sheet1", 1, 2);
+	    String firstName = wb.getSheet("Sheet1").getRow(1).getCell(0).toString();
+	    String lastName = wb.getSheet("Sheet1").getRow(1).getCell(1).toString();
+	    String postalCode = wb.getSheet("Sheet1").getRow(1).getCell(2).toString();
 
         // Enter First Name
         checkoutPage.enterFirstName(firstName);
