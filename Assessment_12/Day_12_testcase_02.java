@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 import Assessment_12.BaseClass;
 import Assessment12.pom.homepage;
 import Assessment12.pom.myinfopage;
-
+import org.apache.poi.ss.usermodel.DataFormatter;
 
 public class Day_12_testcase_02 extends BaseClass {
 
@@ -26,10 +26,10 @@ public class Day_12_testcase_02 extends BaseClass {
 		Workbook wb = WorkbookFactory.create(file);
 		Sheet sh = wb.getSheet("Sheet2");
 		Row row = sh.getRow(1);
-		
+		DataFormatter df = new DataFormatter();
 		String fN = row.getCell(0).getStringCellValue();
 		String lN = row.getCell(1).getStringCellValue();
-		String EId = row.getCell(2).getStringCellValue();
+		String EId = df.formatCellValue(row.getCell(2));
 		
 		// object creation for home page
 		homepage h = new homepage(d);
@@ -53,7 +53,7 @@ public class Day_12_testcase_02 extends BaseClass {
 		
 	}
 	
-	@Test(priority = 2)
+	@Test(priority = 2, dependsOnMethods = "infoTest")
 	public void verify() throws InterruptedException {
 		
 		// object creation for home page
@@ -67,20 +67,18 @@ public class Day_12_testcase_02 extends BaseClass {
 		//printing details
 		Thread.sleep(2000);
 		System.out.println("First Name: " + m.verifyFN());
-		Thread.sleep(2000);
 	    System.out.println("Last Name: " + m.verifyLN());
-	    Thread.sleep(2000);
 	    System.out.println("Employee ID: " + m.verifyEId());
 	    
 	    Thread.sleep(2000);
 	    
 	    //verifying using assert 
 		Assert.assertEquals(m.verifyFN(), "Vaibhav");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		Assert.assertEquals(m.verifyLN(), "K");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		Assert.assertEquals(m.verifyEId(), "107");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		System.out.println("Record Found");
 	}
 	
