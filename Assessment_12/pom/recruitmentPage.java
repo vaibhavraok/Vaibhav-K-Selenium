@@ -52,7 +52,7 @@ public class recruitmentPage {
 	}
 
 	public void getVName(String value) {
-		VName.sendKeys(value);;
+		VName.sendKeys(value);
 	}
 
 	public void getJobtitle() throws AWTException {
@@ -66,15 +66,16 @@ public class recruitmentPage {
 	}
 
 	public void getDescription(String value) {
-		description.sendKeys(value);;
+		description.sendKeys(value);
 	}
 	public void getHR(String value) {
-		description.sendKeys(value);;
+		HR.sendKeys(value);
 	}
 
 	public void getPositions(String value) {
 		positions.sendKeys(value);
 	}
+	
 
 	public void getSavebtn() {
 		savebtn.click();
