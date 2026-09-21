@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
+import org.apache.poi.ss.usermodel.DataFormatter;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -25,14 +26,14 @@ public class Day_12_testcase_01 extends BaseClass {
 		//read data from excel 
 		FileInputStream file = new FileInputStream("./src/test/resources/Assessment12_data/Testcase2.xlsx");
 		Workbook wb = WorkbookFactory.create(file);
-		Sheet sh = wb.getSheet("sheet1");
+		Sheet sh = wb.getSheet("Sheet1");
 		Row row = sh.getRow(1);
-		
+		DataFormatter df = new DataFormatter();
 		String vName = row.getCell(0).getStringCellValue();
 		String Jobtitle = row.getCell(1).getStringCellValue();
 		String description = row.getCell(2).getStringCellValue();
 		String HR = row.getCell(3).getStringCellValue();
-		String positions = row.getCell(4).getStringCellValue();
+		String positions = df.formatCellValue(row.getCell(4));
 		
 		Thread.sleep(2000);
 		// object creation for home page
