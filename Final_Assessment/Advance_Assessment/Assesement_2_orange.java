@@ -18,25 +18,31 @@ import orange_HRM.homepage;
 public class Assesement_2_orange extends BaseClass{
 
 	@Test
-	public void orangeHRM() throws InterruptedException, IOException {
-	
-		Thread.sleep(2000);
-		homepage h = new homepage(d);
-		//click buzz link
-		h.getBuzzlink();
-		Thread.sleep(2000);
-				
-		buzz b = new buzz(d);
-		//pass the text to post
-		b.getTextfield();
-		Thread.sleep(3000);
-		//click on post
-		b.getPostbtn();
-		System.out.println("posted");
-		Thread.sleep(4000);
-		//verify it is posted or not
-		System.out.println(b.getVerify());
-		Assert.assertTrue(b.getVerify());
-		System.out.println("posted and verified");
-	}
+	public void orangeHRM() throws IOException, InterruptedException {
+
+    homepage h = new homepage(d);
+
+    // click Buzz
+    h.getBuzz();
+
+    Thread.sleep(2000);
+
+    buzz b = new buzz(d);
+
+    // get data from Excel
+    String data = ExcelUtility.getData("sheet2", 1, 0);
+
+    // enter data
+    b.getEnterdata(data);
+
+    // click Post
+    b.getPost();
+
+    Thread.sleep(3000);
+
+    // verify Recent Post
+    b.verify(data);
+
+    System.out.println("posted and verified");
+}
 }
