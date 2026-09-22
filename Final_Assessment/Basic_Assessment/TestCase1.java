@@ -9,6 +9,9 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
+//        Task 1
+//        1.Navigate to demoAppsQspiders toggle page 2.Click on disabled toggle buttons
+//        3.Click on Place order button. 4.Verify that order is placed.
 
 public class TestCase1 {
 	public static void main(String[] args) throws InterruptedException {
