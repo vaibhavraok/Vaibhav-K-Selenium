@@ -1,0 +1,2 @@
+  1.Login to orangeHrm application ->Click on Buzz link -> enter some data in the What's on your mind?
+//     text field ->click on post ->then verify whether the post is posted in the Recent post -> logout
