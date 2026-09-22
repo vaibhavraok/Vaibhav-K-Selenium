@@ -9,6 +9,10 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.testng.Assert;
 
+//			Task 2
+//        1.Navigatesto demoAppsQspiders slidder page
+//        2.slide the bar till men cotton jacket and verify.
+
 public class TestCase2 {
 	public static void main(String[] args) throws InterruptedException {
 		WebDriver driver=new ChromeDriver();
