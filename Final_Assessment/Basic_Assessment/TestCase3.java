@@ -8,6 +8,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 
+//			Task 3
+//        1.Navigate to demoAppsQspiders draganddrop multiple page
+//        2.drag and drop the accessories accordingly.
+
 public class TestCase3 {
 	public static void main(String[] args) {
 		WebDriver driver=new ChromeDriver();
