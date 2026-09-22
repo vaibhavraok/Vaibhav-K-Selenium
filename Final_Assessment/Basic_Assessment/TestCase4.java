@@ -7,6 +7,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+//			Task 4
+//        1.Navigate to ShopperStack application 2.Click on any product
+//        3.And Check the product is available to that pincode or not.
 public class TestCase4 {
 	public static void main(String[] args) {
 		WebDriver driver=new ChromeDriver();
