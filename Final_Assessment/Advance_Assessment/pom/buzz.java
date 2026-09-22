@@ -35,7 +35,7 @@ public class buzz {
 		//fetching data from excel
 		FileInputStream fis = new FileInputStream("./src/test/resources/DDT/data_OHRM.xlsx");
 		Workbook wb = WorkbookFactory.create(fis);
-		Sheet sh = wb.getSheet("sheet2");
+		Sheet sh = wb.getSheet("Sheet1");
 		Row row = sh.getRow(1);	
 		String text = row.getCell(0).getStringCellValue();
 		textfield.sendKeys(text);
@@ -48,4 +48,5 @@ public class buzz {
 	public boolean getVerify() {
 		return verify.isDisplayed();
 	}
+	
 }
