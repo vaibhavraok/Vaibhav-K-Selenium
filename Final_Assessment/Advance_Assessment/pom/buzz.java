@@ -1,13 +1,10 @@
 package orange_HRM;
 
-import java.io.IOException;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
-import utility.ExcelUtility;
+import org.testng.Assert;
 
 public class buzz {
 
@@ -19,26 +16,33 @@ public class buzz {
     }
 
     @FindBy(xpath="//textarea[@class='oxd-buzz-post-input']")
-    private WebElement textfield;
+    private WebElement enterdata;
 
     @FindBy(xpath="//button[@type='submit']")
-    private WebElement postbtn;
+    private WebElement post;
 
     @FindBy(xpath="//button[@class='oxd-button oxd-button--medium oxd-button--label-warn orangehrm-post-filters-button']/../..//p[@class='oxd-text oxd-text--p orangehrm-buzz-post-body-text']")
-    private WebElement verify;
+    private WebElement recentPost;
 
-    public void getTextfield() throws IOException {
 
-        String text = ExcelUtility.getData("sheet2", 1, 0);
-
-        textfield.sendKeys(text);
+    public void getEnterdata(String data) {
+        enterdata.sendKeys(data);
     }
 
-    public void getPostbtn() {
-        postbtn.click();
+
+    public void getPost() {
+        post.click();
     }
 
-    public boolean getVerify() {
-        return verify.isDisplayed();
+
+    public boolean getRecentPost(String test) {
+        String txt = recentPost.getText();
+        return txt.equals(test);
+    }
+
+
+    public void verify(String args) {
+        Assert.assertTrue(getRecentPost(args));
+        System.out.println("verification successfull");
     }
 }
