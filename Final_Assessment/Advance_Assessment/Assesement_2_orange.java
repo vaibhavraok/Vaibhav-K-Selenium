@@ -30,7 +30,7 @@ public class Assesement_2_orange extends BaseClass{
     buzz b = new buzz(d);
 
     // get data from Excel
-    String data = ExcelUtility.getData("sheet2", 1, 0);
+    String data = ExcelUtility.getData("Sheet1", 1, 0);
 
     // enter data
     b.getEnterdata(data);
