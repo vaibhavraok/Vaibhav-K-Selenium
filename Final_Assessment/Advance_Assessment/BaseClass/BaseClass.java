@@ -16,7 +16,7 @@ import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
-
+import utility.PropertyUtility;
 import orange_HRM.loginpage;
 
 public class BaseClass {
@@ -30,13 +30,10 @@ public class BaseClass {
 	@BeforeClass
 	public void bc() throws IOException, InterruptedException {
 		System.out.println("Open the browser");
-		FileInputStream file = new FileInputStream("./src/test/resources/DDT/common_data_OHRM.properties");
-		Properties p = new Properties();
-		p.load(file);
-		browser = p.getProperty("browser");
-		Url = p.getProperty("url");
-		un = p.getProperty("username");
-		pw = p.getProperty("password");
+		browser = PropertyUtility.getData("browser");
+		Url = PropertyUtility.getData("url");
+		un = PropertyUtility.getData("username");
+		pw = PropertyUtility.getData("password");
 		
 		Thread.sleep(3000);
 		// Avoid Change Password popup
