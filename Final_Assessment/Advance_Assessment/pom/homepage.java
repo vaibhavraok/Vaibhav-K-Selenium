@@ -15,24 +15,12 @@ WebDriver d;
 		PageFactory.initElements(d,this);
 	}
 	
-	@FindBy(xpath="//span[text()='Recruitment']")
-	private WebElement RecruitmentLink;
-	
-	@FindBy(xpath = "//span[text()='My Info']")
-	private WebElement infoLink;
-	
 	@FindBy(xpath = "//span[text()='Buzz']")
 	private WebElement buzzlink;
+	
+	public void getBuzz() {
+    	buzzlink.click();
+	}
 
-	public void getRecruitmentLink() {
-		RecruitmentLink.click();
-	}
 	
-	public void getInfoLink() {
-		infoLink.click();
-	}
-	
-	public void getBuzzlink() {
-		buzzlink.click();
-	}
 }
