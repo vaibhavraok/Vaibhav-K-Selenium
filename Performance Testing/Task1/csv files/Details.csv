@@ -1,0 +1,5 @@
+﻿inputName,address,city,state,zipCode,cardType,creditCardNumber,creditCardMonth,creditCardYear,nameOnCard
+Vaibhav,Ballari,Ballari,Karnataka,583101,visa,23543545,11,2017,HDFC
+Kruthik,Ballari,Ballari,Karnataka,583101,visa,12345678,12,2019,SBI
+Suhail,Ballari,Ballari,Karnataka,583101,visa,95864689,1,2022,Axis
+Tousif,Ballari,Ballari,Karnataka,583101,visa,23634456,5,2018,ICICI
